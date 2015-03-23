@@ -20,9 +20,9 @@ class addressBook:
         with open(self.bookDir) as file:
             for index, line in enumerate(file, 1):
                 if userInput in line:
-                    print 'Found in ',line
+                    print 'Found in line "{}"'.format(line)
             else:
-                print '{} is not in this book!'.format(userInput)
+                print '{} is not in the rest of this book!'.format(userInput)
 
     def browse(self, userInput):
         '''User types a number indicating how many lines
@@ -34,7 +34,7 @@ class addressBook:
     def add(self, userInput):
         '''Add new pair of address and name into the file'''
         book = open(self.bookDir, 'a')
-        book.write(userInput + '\n')
+        book.write(userInput)
         book.close()
 
 
@@ -58,7 +58,7 @@ if action == action1:
 elif action == action2: #Browse
     book = addressBook(bookName, bookPath)
     book.printInfo()
-    userInput = raw_input('Please tell me how many lines you want to see.')
+    userInput = int(raw_input('Please tell me how many lines you want to see.'))
     book.browse(userInput)
 
 elif action == action3: #Search the book
